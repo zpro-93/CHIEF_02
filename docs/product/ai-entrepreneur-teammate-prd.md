@@ -49,7 +49,8 @@ The product should feel like a high-agency business analyst who participates whe
 ### Discord Commands
 
 - `/summarize`
-  - Defaults to the latest message session, using 6+ hours of inactivity as the session boundary.
+  - Defaults to the latest message session in the current channel, using 6+ hours of inactivity as the session boundary.
+  - MVP output is a concise Discord reply plus a saved Markdown summary artifact.
   - Optional arguments: `since`, `until`, `channel`, `topic`.
 
 - `/research`
@@ -141,6 +142,7 @@ Post-MVP tools:
 ## Guardrails
 
 - Ask before storing sensitive durable memory.
+- Do not automatically save session summaries into durable memory until that behavior is explicitly confirmed.
 - Separate sourced facts from AI inferences.
 - Cite sources in research outputs.
 - Never fabricate source links.

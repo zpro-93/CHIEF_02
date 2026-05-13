@@ -57,13 +57,16 @@ Create the first useful summary workflow for the latest Discord message session.
 
 Acceptance criteria:
 
+- `/summarize` without arguments finds the latest message session in the current channel only.
 - A session is a continuous block of messages where no gap between included messages is 6 hours or longer.
 - If there have been no messages for the last 6+ hours, `/summarize` summarizes the latest completed session before that inactivity gap.
 - If messages are currently active, `/summarize` summarizes the current active session.
-- Bot excludes its own messages from summary input.
-- Output states the exact time window summarized.
-- Output includes recap, decisions, action items, risks, and open questions.
-- If there are too few messages to summarize, bot returns a helpful response.
+- Bot excludes its own messages from the summary.
+- Summary includes recap, decisions, action items, open questions, and risks/blockers.
+- Bot states the time window it summarized.
+- If there are too few messages, bot says there is not enough activity to summarize.
+- MVP output is a concise Discord reply plus a saved Markdown summary artifact.
+- The session summary can later become memory input, but memory saving is not automatic unless confirmed.
 
 ## Issue 5: Implement `/summarize` Custom Time Range
 
