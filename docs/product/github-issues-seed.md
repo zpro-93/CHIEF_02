@@ -47,13 +47,15 @@ Acceptance criteria:
 - Bot messages can be excluded.
 - API rate limits are handled gracefully.
 
-## Issue 4: Implement `/summarize` Last Session
+## Issue 4: Story 2.1: Implement `/summarize` Last Session
 
 Labels: `type:feature`, `area:agents`, `area:discord`, `priority:p0`
 
 Description:
 
 Create the first useful summary workflow for the latest Discord message session.
+
+Product status: Approved.
 
 Acceptance criteria:
 
@@ -65,8 +67,10 @@ Acceptance criteria:
 - Discord reply includes Summary date/time, Recap, Action Items, and Open Questions.
 - Markdown artifact can include richer detail such as decisions, risks/blockers, participants, and potential memory candidates.
 - Bot states the time window it summarized.
-- If there are too few messages, bot says there is not enough activity to summarize.
+- If there are fewer than 5 human messages, bot says there is not enough activity to summarize.
 - MVP output is a concise Discord reply plus a saved Markdown summary artifact.
+- Markdown summaries are saved under `docs/artifacts/summaries/YYYY-MM-DD-channel-name-summary.md`.
+- Bot may infer action item owners from chat, but uncertain owners must be marked `Unassigned`.
 - The session summary can later become memory input, but memory saving is not automatic unless confirmed.
 
 ## Issue 5: Implement `/summarize` Custom Time Range
