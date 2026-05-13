@@ -62,7 +62,8 @@ Acceptance criteria:
 - If there have been no messages for the last 6+ hours, `/summarize` summarizes the latest completed session before that inactivity gap.
 - If messages are currently active, `/summarize` summarizes the current active session.
 - Bot excludes its own messages from the summary.
-- Summary includes recap, decisions, action items, open questions, and risks/blockers.
+- Discord reply includes Summary date/time, Recap, Action Items, and Open Questions.
+- Markdown artifact can include richer detail such as decisions, risks/blockers, participants, and potential memory candidates.
 - Bot states the time window it summarized.
 - If there are too few messages, bot says there is not enough activity to summarize.
 - MVP output is a concise Discord reply plus a saved Markdown summary artifact.

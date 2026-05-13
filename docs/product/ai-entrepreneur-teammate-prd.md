@@ -51,6 +51,7 @@ The product should feel like a high-agency business analyst who participates whe
 - `/summarize`
   - Defaults to the latest message session in the current channel, using 6+ hours of inactivity as the session boundary.
   - MVP output is a concise Discord reply plus a saved Markdown summary artifact.
+  - Discord reply format: Summary date/time, Recap, Action Items, and Open Questions.
   - Optional arguments: `since`, `until`, `channel`, `topic`.
 
 - `/research`
