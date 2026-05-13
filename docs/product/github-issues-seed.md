@@ -2,7 +2,7 @@
 
 Use this file to create initial GitHub issues manually or through automation.
 
-## Issue 1: Initialize Project Repository
+## Issue 1: Story 0.1: Initialize Project Repository
 
 Labels: `type:feature`, `priority:p0`
 
@@ -17,7 +17,7 @@ Acceptance criteria:
 - Example `.env` is documented.
 - Product docs are committed under `docs/product`.
 
-## Issue 2: Create Discord Bot Skeleton
+## Issue 2: Story 1.1: Create Discord Bot Skeleton
 
 Labels: `type:feature`, `area:discord`, `priority:p0`
 
@@ -32,7 +32,7 @@ Acceptance criteria:
 - `/ping` responds successfully.
 - Logging exists for command invocation and errors.
 
-## Issue 3: Implement Message Window Fetching
+## Issue 3: Story 1.2: Implement Message Window Fetching
 
 Labels: `type:feature`, `area:discord`, `priority:p0`
 
@@ -73,7 +73,7 @@ Acceptance criteria:
 - Bot may infer action item owners from chat, but uncertain owners must be marked `Unassigned`.
 - The session summary can later become memory input, but memory saving is not automatic unless confirmed.
 
-## Issue 5: Implement `/summarize` Custom Time Range
+## Issue 5: Story 2.2: Implement `/summarize` Custom Time Range
 
 Labels: `type:feature`, `area:discord`, `area:agents`, `priority:p0`
 
@@ -88,7 +88,7 @@ Acceptance criteria:
 - Output states the exact covered time range.
 - Empty result windows return a helpful response.
 
-## Issue 6: Define Agent Orchestrator Interfaces
+## Issue 6: Story 5.1: Define Agent Orchestrator Interfaces
 
 Labels: `type:feature`, `area:agents`, `priority:p0`
 
@@ -103,7 +103,7 @@ Acceptance criteria:
 - Tool calls pass through a registry.
 - Workflows are testable without Discord.
 
-## Issue 7: Build Memory Store MVP
+## Issue 7: Story 4.1: Build Memory Store MVP
 
 Labels: `type:feature`, `area:memory`, `priority:p0`
 
@@ -118,7 +118,7 @@ Acceptance criteria:
 - `/recall` retrieves relevant memories.
 - Memory retrieval can be injected into summary and research workflows.
 
-## Issue 8: Build Research Brief Workflow
+## Issue 8: Story 3.1: Build Research Brief Workflow
 
 Labels: `type:feature`, `area:research`, `area:agents`, `priority:p0`
 
@@ -133,7 +133,7 @@ Acceptance criteria:
 - Claims are separated into sourced facts and analysis.
 - Output is saved as Markdown.
 
-## Issue 9: Add Web Research Tool
+## Issue 9: Story 3.3: Add Web Research Tool
 
 Labels: `type:feature`, `area:research`, `priority:p1`
 
@@ -147,7 +147,7 @@ Acceptance criteria:
 - Research workflow cites sources.
 - Weak source coverage is explicitly flagged.
 
-## Issue 10: Add Markdown Publisher
+## Issue 10: Story 6.1: Add Markdown Publisher
 
 Labels: `type:feature`, `area:publishing`, `priority:p1`
 
@@ -161,7 +161,7 @@ Acceptance criteria:
 - Filenames include date and slug.
 - Discord response includes artifact path.
 
-## Issue 11: Add Notion Publisher
+## Issue 11: Story 6.2: Add Notion Publisher
 
 Labels: `type:feature`, `area:publishing`, `priority:p2`
 
@@ -176,7 +176,7 @@ Acceptance criteria:
 - Bot can create simple tables for competitor or market data.
 - Discord response includes Notion page URL.
 
-## Issue 12: Add Google Workspace Publisher
+## Issue 12: Story 6.3: Add Google Workspace Publisher
 
 Labels: `type:feature`, `area:publishing`, `priority:p2`
 
