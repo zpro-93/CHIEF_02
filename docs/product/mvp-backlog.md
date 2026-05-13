@@ -39,14 +39,17 @@ Acceptance criteria:
 
 ### Story 2.1: Summarize Last Session
 
-As a founder, I want `/summarize` to default to the last unsummarized session so that I do not have to specify dates every time.
+As a founder, I want `/summarize` to default to the latest message session so that I can summarize the most recent meaningful conversation even if the channel is currently quiet.
 
 Acceptance criteria:
 
-- System stores the last summary boundary per channel.
-- Command fetches messages since the last boundary.
+- A session is a continuous block of messages where no gap between included messages is 6 hours or longer.
+- If there have been no messages for the last 6+ hours, `/summarize` summarizes the latest completed session before that inactivity gap.
+- If messages are currently active, `/summarize` summarizes the current active session.
+- Bot excludes its own messages from summary input.
+- Output states the exact time window summarized.
 - Output includes recap, decisions, action items, risks, and open questions.
-- New boundary is saved after successful summary.
+- If there are too few messages to summarize, bot returns a helpful response.
 
 ### Story 2.2: Summarize Custom Time Window
 

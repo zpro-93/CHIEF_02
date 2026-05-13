@@ -53,14 +53,17 @@ Labels: `type:feature`, `area:agents`, `area:discord`, `priority:p0`
 
 Description:
 
-Create the first useful summary workflow for the last unsummarized Discord session.
+Create the first useful summary workflow for the latest Discord message session.
 
 Acceptance criteria:
 
-- System stores last summary boundary per channel.
-- `/summarize` defaults to messages since that boundary.
+- A session is a continuous block of messages where no gap between included messages is 6 hours or longer.
+- If there have been no messages for the last 6+ hours, `/summarize` summarizes the latest completed session before that inactivity gap.
+- If messages are currently active, `/summarize` summarizes the current active session.
+- Bot excludes its own messages from summary input.
+- Output states the exact time window summarized.
 - Output includes recap, decisions, action items, risks, and open questions.
-- Summary artifact is saved as Markdown.
+- If there are too few messages to summarize, bot returns a helpful response.
 
 ## Issue 5: Implement `/summarize` Custom Time Range
 

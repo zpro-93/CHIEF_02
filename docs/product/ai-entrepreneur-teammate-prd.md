@@ -49,7 +49,7 @@ The product should feel like a high-agency business analyst who participates whe
 ### Discord Commands
 
 - `/summarize`
-  - Defaults to the last session since the previous summary.
+  - Defaults to the latest message session, using 6+ hours of inactivity as the session boundary.
   - Optional arguments: `since`, `until`, `channel`, `topic`.
 
 - `/research`
