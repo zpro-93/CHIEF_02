@@ -14,6 +14,7 @@ The product helps the team:
 - [PRD](docs/product/ai-entrepreneur-teammate-prd.md)
 - [MVP Backlog](docs/product/mvp-backlog.md)
 - [Engineering Roadmap](docs/product/engineering-roadmap.md)
+- [Technical Story Breakdown](docs/product/technical-story-breakdown.md)
 - [GitHub Issues Seed](docs/product/github-issues-seed.md)
 
 ## MVP Direction
