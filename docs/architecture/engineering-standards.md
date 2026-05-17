@@ -67,12 +67,24 @@ For Story 0.1, use conservative Python tooling:
 
 - testing: `pytest`
 - formatting: `black`
-- linting: `flake8`
+- linting: `pylint`
 - dependency vulnerability check: `pip-audit`
 
 These are third-party tools, so they should be documented as development tooling. They are not replacing the environment manager or package installer.
 
-If we want even fewer third-party development dependencies at first, we can defer `black`, `flake8`, or `pip-audit`, but the recommended enterprise baseline includes them.
+Recommended local quality gate:
+
+- provide repo-managed pre-commit hooks that run `black`, `pylint`, and focused tests
+- keep CI as the authoritative gate because local hooks can be skipped
+- run `pip-audit` in CI as soon as dependency files exist
+
+Implementation note:
+
+- We can use the third-party `pre-commit` framework for hook management, or keep a lightweight repo-managed Git hooks script under a directory such as `.githooks/`.
+- Given the enterprise-first posture, start with a simple repo-managed hook script unless the team later approves `pre-commit` as an additional development dependency.
+- Developers can enable the repo hook with `git config core.hooksPath .githooks`.
+
+If we want even fewer third-party development dependencies at first, we can defer `black`, `pylint`, or `pip-audit`, but the recommended enterprise baseline includes them.
 
 ## Discord Framework Decision
 
@@ -140,7 +152,9 @@ Story 0.1 is complete when:
 - requirements files exist.
 - `.env.example` exists and contains no secrets.
 - test runner is configured.
-- formatter/linter decision is implemented or explicitly deferred.
-- CI runs install, lint, and tests.
+- formatter/linter decision is implemented with `black` and `pylint`, or explicitly deferred.
+- dependency audit is implemented with `pip-audit`, or explicitly deferred.
+- repo-managed pre-commit hooks are provided for local checks.
+- CI runs install, format check, lint, tests, and dependency audit.
 - README has local setup instructions.
 - one smoke test passes.

@@ -44,7 +44,9 @@ Recommended development security tooling:
 - GitHub Dependabot for dependency update visibility
 - GitHub secret scanning where available
 
-Story 0.1 should include a path for dependency scanning. It can be implemented immediately if we accept the additional dev dependency, or tracked as a follow-up if we want minimal initial tooling.
+Story 0.1 should include dependency scanning with `pip-audit` unless there is a specific blocker.
+
+`pip-audit` should run in CI. Local pre-commit hooks may run faster checks by default, but dependency audit should be available as an explicit local command too.
 
 ## Secrets Management
 
@@ -144,8 +146,9 @@ Initial CI should run:
 
 - dependency installation
 - tests
-- formatting/lint checks
-- dependency vulnerability audit if accepted for Story 0.1
+- formatting checks with `black`
+- lint checks with `pylint`
+- dependency vulnerability audit with `pip-audit`
 
 CI should not require production secrets.
 

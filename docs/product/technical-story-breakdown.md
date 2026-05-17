@@ -13,17 +13,19 @@ Technical steps:
 3. Create base repo structure for bot, agents, memory, tools, schemas, publishers, docs, and tests.
 4. Add `requirements.txt` for runtime dependencies.
 5. Add `requirements-dev.txt` for development dependencies.
-6. Add formatter, linter, test runner, and dependency audit tooling if approved.
+6. Add `pytest`, `black`, `pylint`, and `pip-audit` as development tooling.
 7. Add one passing smoke test.
 8. Add `.env.example` with required variables and no secrets.
 9. Add local development instructions to `README.md`.
-10. Add basic CI workflow for install, lint, test, and optional dependency audit.
+10. Add repo-managed pre-commit hooks for local `black`, `pylint`, and focused test checks.
+11. Add basic CI workflow for install, format check, lint, test, and dependency audit.
 
 Engineering notes:
 
-- Recommended MVP stack: Python, `discord.py`, `venv`, `pip`, `pytest`, `black`, `flake8`, and optional `pip-audit`.
+- Recommended MVP stack: Python, `discord.py`, `venv`, `pip`, `pytest`, `black`, `pylint`, and `pip-audit`.
 - Keep the first repo structure boring and obvious; avoid premature framework sprawl.
 - `uv` and Poetry are not part of the initial setup because the project is using an enterprise-first supply-chain posture.
+- Use repo-managed Git hooks first. Do not add the third-party `pre-commit` framework unless we explicitly approve it later.
 
 ## Story 1.1: Create Discord Bot Skeleton
 

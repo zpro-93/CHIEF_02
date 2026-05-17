@@ -17,17 +17,19 @@ Technical steps:
 3. Create base repo structure for bot, agents, memory, tools, schemas, publishers, docs, and tests.
 4. Add `requirements.txt` for runtime dependencies.
 5. Add `requirements-dev.txt` for development dependencies.
-6. Add formatter, linter, test runner, and dependency audit tooling if approved.
+6. Add `pytest`, `black`, `pylint`, and `pip-audit` as development tooling.
 7. Add one passing smoke test.
 8. Add `.env.example` with required variables and no secrets.
 9. Add local development instructions to `README.md`.
-10. Add basic CI workflow for install, lint, test, and optional dependency audit.
+10. Add repo-managed pre-commit hooks for local `black`, `pylint`, and focused test checks.
+11. Add basic CI workflow for install, format check, lint, test, and dependency audit.
 
 Acceptance criteria:
 
 - Runtime selected: Python.
 - Dependency setup uses `venv` and `pip`.
-- Formatter, linter, and test runner are configured.
+- `pytest`, `black`, `pylint`, and `pip-audit` are configured.
+- Repo-managed pre-commit hooks are documented.
 - Example `.env` is documented.
 - Product docs are committed under `docs/product`.
 
