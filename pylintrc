@@ -1,0 +1,15 @@
+[MAIN]
+py-version=3.12
+recursive=yes
+persistent=no
+
+[MESSAGES CONTROL]
+disable=
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    too-few-public-methods,
+    too-many-instance-attributes
+
+[FORMAT]
+max-line-length=100

@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Create virtual environment
+        run: python -m venv .venv
+
+      - name: Install dependencies
+        run: |
+          . .venv/bin/activate
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+
+      - name: Format check
+        run: |
+          . .venv/bin/activate
+          python -m black --check app tests
+
+      - name: Lint
+        run: |
+          . .venv/bin/activate
+          python -m pylint app tests
+
+      - name: Test
+        run: |
+          . .venv/bin/activate
+          python -m pytest
+
+      - name: Dependency audit
+        env:
+          TMPDIR: .cache/tmp
+        run: |
+          . .venv/bin/activate
+          mkdir -p .cache/tmp .cache/pip-audit
+          python -m pip_audit --cache-dir .cache/pip-audit -r requirements.txt -r requirements-dev.txt

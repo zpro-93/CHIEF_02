@@ -258,3 +258,61 @@ The MVP should prove:
 - MCP can serve as the standard tool-access path.
 
 After that, expand into richer research, planning, Notion dashboards, Google Workspace artifacts, and deeper agent-scoped memory.
+
+## Local Development
+
+The project uses Python with standard-library `venv` and `pip`.
+
+Recommended Python version: 3.12.
+
+Windows PowerShell:
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements-dev.txt
+```
+
+macOS/Linux:
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements-dev.txt
+```
+
+Run local checks:
+
+```bash
+python -m black --check app tests
+python -m pylint app tests
+python -m pytest
+mkdir -p .cache/tmp .cache/pip-audit
+TMPDIR=.cache/tmp python -m pip_audit --cache-dir .cache/pip-audit -r requirements.txt -r requirements-dev.txt
+```
+
+Windows PowerShell audit command:
+
+```powershell
+New-Item -ItemType Directory -Force .cache\tmp, .cache\pip-audit | Out-Null
+$env:TMPDIR = "$PWD\.cache\tmp"
+python -m pip_audit --cache-dir .cache\pip-audit -r requirements.txt -r requirements-dev.txt
+```
+
+Enable repo-managed Git hooks:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+The pre-commit hook runs:
+
+```bash
+python -m black --check app tests
+python -m pylint app tests
+python -m pytest tests
+```
+
+Copy `.env.example` to `.env` for local secrets. Never commit `.env`.
