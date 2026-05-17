@@ -81,9 +81,8 @@ The Summarizer Agent handles Discord conversation summaries.
 Behavior:
 
 - if a timeframe is mentioned, summarize messages from that timeframe
-- if no timeframe is mentioned, summarize the latest meaningful message chunk
-- current design uses a chunk rule where messages belong together when the max gap between messages is 5 minutes
-- MVP Story 2.1 uses the approved latest-session rule for `/summarize`
+- if no timeframe is mentioned, summarize the latest message session in the current channel
+- the approved MVP session rule uses a 6+ hour inactivity boundary
 - output in Discord stays concise
 
 Approved Discord summary format:
