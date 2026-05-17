@@ -81,8 +81,8 @@ The Summarizer Agent handles Discord conversation summaries.
 Behavior:
 
 - if a timeframe is mentioned, summarize messages from that timeframe
-- if no timeframe is mentioned, summarize the latest message session in the current channel
-- the approved MVP session rule uses a 6+ hour inactivity boundary
+- if no timeframe is mentioned, summarize the latest message chunk in the current channel
+- the approved MVP chunk rule starts a new chunk when the gap between two human messages is more than 5 minutes
 - output in Discord stays concise
 
 Approved Discord summary format:
@@ -226,7 +226,7 @@ Specialist agents request tools indirectly. The Orchestrator and MCP Tool Broker
 Build the narrowest useful teammate first:
 
 1. Discord bot with slash commands.
-2. Chat summarization for latest session and custom time windows.
+2. Chat summarization for latest message chunk and custom time windows.
 3. Markdown artifact publishing.
 4. Memory system for durable team and agent-scoped context.
 5. MBA-style research brief generation.

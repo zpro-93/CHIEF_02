@@ -63,9 +63,9 @@ Engineering notes:
 - This should be a reusable service, not embedded directly inside `/summarize`.
 - The summarizer should receive normalized messages, not raw Discord API objects.
 
-## Story 2.1: Implement `/summarize` Last Session
+## Story 2.1: Implement `/summarize` Latest Message Chunk
 
-Goal: summarize the latest meaningful conversation session in the current channel.
+Goal: summarize the latest focused message chunk in the current channel.
 
 Product status: Approved.
 
@@ -73,8 +73,8 @@ Technical steps:
 
 1. Add `/summarize` command with no required arguments.
 2. Fetch recent messages from the current Discord channel.
-3. Identify the latest session by scanning backward until a 6+ hour inactivity gap.
-4. If the latest session contains fewer than 5 human messages, return a not-enough-activity response.
+3. Identify the latest chunk by scanning backward until the gap between adjacent human messages is more than 5 minutes.
+4. If the latest chunk contains fewer than 5 human messages, return a not-enough-activity response.
 5. Exclude bot messages before summarization.
 6. Build summarizer input with channel name, time window, participants, and message list.
 7. Generate concise Discord response with only Summary date/time, Recap, Action Items, and Open Questions.
@@ -82,12 +82,13 @@ Technical steps:
 9. Generate full Markdown artifact with richer detail: decisions, blockers, participants, and potential memory candidates.
 10. Save Markdown artifact under `docs/artifacts/summaries/YYYY-MM-DD-channel-name-summary.md`.
 11. Return Discord response and include the artifact path.
-12. Add tests for active session, completed session after 6+ hours, too few messages, bot messages, and unclear action item owners.
+12. Add tests for active chunk, completed chunk after a 5+ minute gap, too few messages, bot messages, and unclear action item owners.
 
 Engineering notes:
 
 - Memory candidates may be listed in the Markdown artifact, but do not save them to durable memory yet.
 - The command reads the current channel only.
+- A chunk boundary is based on gaps between adjacent human messages after bot messages are excluded.
 
 ## Story 2.2: Implement `/summarize` Custom Time Range
 
@@ -107,7 +108,7 @@ Technical steps:
 
 Engineering notes:
 
-- Custom time range should not use the 6-hour session heuristic.
+- Custom time range should not use the 5-minute latest-chunk heuristic.
 - It should still exclude bot messages and require at least 5 human messages.
 
 ## Story 3.1: Build Research Brief Workflow

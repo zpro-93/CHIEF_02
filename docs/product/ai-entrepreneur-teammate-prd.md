@@ -22,7 +22,7 @@ The product should feel like a high-agency business analyst who participates whe
 ## MVP Goals
 
 - Discord bot can join one configured server and monitor selected channels.
-- Users can request summaries for a time window or the last unresolved session.
+- Users can request summaries for a time window or the latest message chunk.
 - Users can request a structured research brief for a topic, product, market, or business idea.
 - Bot stores memory for decisions, facts, preferences, open tasks, and prior research outputs.
 - Bot can generate Markdown documentation suitable for GitHub and later export.
@@ -39,7 +39,7 @@ The product should feel like a high-agency business analyst who participates whe
 
 ## Success Metrics
 
-- A founder can ask for a summary of the last session and get a useful recap in under 60 seconds.
+- A founder can ask for a summary of the latest message chunk and get a useful recap in under 60 seconds.
 - A founder can ask for a research brief and receive a structured document with sources, analysis frameworks, risks, and recommendations.
 - The bot can recall previous decisions and use them in later summaries or research.
 - Engineers can add a new tool integration without rewriting the agent orchestration layer.
@@ -49,7 +49,7 @@ The product should feel like a high-agency business analyst who participates whe
 ### Discord Commands
 
 - `/summarize`
-  - Defaults to the latest message session in the current channel, using 6+ hours of inactivity as the session boundary.
+  - Defaults to the latest message chunk in the current channel, using a gap of more than 5 minutes between human messages as the chunk boundary.
   - MVP output is a concise Discord reply plus a saved Markdown summary artifact.
   - Discord reply format: Summary date/time, Recap, Action Items, and Open Questions.
   - If there are fewer than 5 human messages, it says there is not enough activity to summarize.
@@ -144,7 +144,7 @@ Post-MVP tools:
 ## Guardrails
 
 - Ask before storing sensitive durable memory.
-- Do not automatically save session summaries into durable memory until that behavior is explicitly confirmed.
+- Do not automatically save chunk summaries into durable memory until that behavior is explicitly confirmed.
 - Separate sourced facts from AI inferences.
 - Cite sources in research outputs.
 - Never fabricate source links.

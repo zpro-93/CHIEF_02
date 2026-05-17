@@ -47,22 +47,22 @@ Acceptance criteria:
 - Bot messages can be excluded.
 - API rate limits are handled gracefully.
 
-## Issue 4: Story 2.1: Implement `/summarize` Last Session
+## Issue 4: Story 2.1: Implement `/summarize` Latest Message Chunk
 
 Labels: `type:feature`, `area:agents`, `area:discord`, `priority:p0`
 
 Description:
 
-Create the first useful summary workflow for the latest Discord message session.
+Create the first useful summary workflow for the latest Discord message chunk.
 
 Product status: Approved.
 
 Acceptance criteria:
 
-- `/summarize` without arguments finds the latest message session in the current channel only.
-- A session is a continuous block of messages where no gap between included messages is 6 hours or longer.
-- If there have been no messages for the last 6+ hours, `/summarize` summarizes the latest completed session before that inactivity gap.
-- If messages are currently active, `/summarize` summarizes the current active session.
+- `/summarize` without arguments finds the latest message chunk in the current channel only.
+- A chunk is a continuous block of human messages where no gap between adjacent human messages is more than 5 minutes.
+- If there have been no recent messages, `/summarize` still summarizes the latest completed chunk.
+- If messages are currently active, `/summarize` summarizes the current active chunk.
 - Bot excludes its own messages from the summary.
 - Discord reply includes Summary date/time, Recap, Action Items, and Open Questions.
 - Markdown artifact can include richer detail such as decisions, risks/blockers, participants, and potential memory candidates.
@@ -71,7 +71,7 @@ Acceptance criteria:
 - MVP output is a concise Discord reply plus a saved Markdown summary artifact.
 - Markdown summaries are saved under `docs/artifacts/summaries/YYYY-MM-DD-channel-name-summary.md`.
 - Bot may infer action item owners from chat, but uncertain owners must be marked `Unassigned`.
-- The session summary can later become memory input, but memory saving is not automatic unless confirmed.
+- The chunk summary can later become memory input, but memory saving is not automatic unless confirmed.
 
 ## Issue 5: Story 2.2: Implement `/summarize` Custom Time Range
 

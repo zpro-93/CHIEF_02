@@ -52,7 +52,7 @@ tests/
 ### Milestone 2: Message Ingestion And Summaries
 
 - Fetch messages by time window.
-- Implement last-session boundary.
+- Implement latest-message-chunk boundary.
 - Build summary prompt and structured output schema.
 - Persist summary artifact as Markdown.
 

@@ -29,7 +29,7 @@ However, the architecture has evolved. The issue set does not yet fully cover:
 - slash command framework for all commands
 - explicit specialist-agent behavior profiles
 - calendar and scheduling workflows
-- architecture consistency around latest-session chunking rules
+- architecture consistency around latest-message-chunk rules
 
 ## Coverage Matrix
 
@@ -60,23 +60,13 @@ However, the architecture has evolved. The issue set does not yet fully cover:
 | Logging, permissioning, audit trail | Story 5.1 partially | Needs more detail |
 | Tests/evals for agents | Individual issues partially | Needs broader eval ticket later |
 
-## Important Inconsistency To Resolve
+## Summarizer Chunk Rule Decision
 
-The README currently says the Summarizer Agent uses this fallback behavior:
+The architecture and Story 2.1 now use this fallback behavior:
 
 > If no timeframe is mentioned, summarize the latest meaningful message chunk where the max gap between messages is 5 minutes.
 
-But approved Story 2.1 says:
-
-> `/summarize` finds the latest session using a 6+ hour inactivity boundary.
-
-These are different algorithms.
-
-Recommendation:
-
-- Keep approved Story 2.1 as the MVP behavior: latest session in current channel, 6+ hour inactivity boundary.
-- Treat the 5-minute chunking idea as a future or alternate summarization mode only if we explicitly want it.
-- Update README to remove or clarify the 5-minute rule.
+If there is more than 5 minutes between two adjacent human messages, the summarizer treats that as a chunk break. `/summarize` without arguments summarizes the latest available chunk in the current channel, even if the channel is currently quiet.
 
 ## Recommended New GitHub Issues
 
@@ -182,6 +172,6 @@ Planner Agent includes meeting schedules, but there is no ticket for calendar ou
 
 ## Recommendation
 
-Before implementation begins, add the missing issues above and resolve the summarizer chunking-rule inconsistency.
+Before implementation begins, add the missing issues above and keep the summarizer chunking rule consistent across implementation tickets.
 
 After that, the issue set will match the architecture closely enough for two engineers to start building in parallel.
