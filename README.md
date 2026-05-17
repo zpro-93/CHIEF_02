@@ -13,6 +13,7 @@ The goal is not just to build a chatbot. The goal is to build an AI teammate tha
 - [GitHub Issues Seed](docs/product/github-issues-seed.md)
 - [Engineering Standards](docs/architecture/engineering-standards.md)
 - [Security Baseline](docs/architecture/security-baseline.md)
+- [Project Handoff](docs/project-handoff.md)
 
 ## High-Level Architecture
 
