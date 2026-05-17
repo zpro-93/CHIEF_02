@@ -11,6 +11,8 @@ The goal is not just to build a chatbot. The goal is to build an AI teammate tha
 - [Engineering Roadmap](docs/product/engineering-roadmap.md)
 - [Technical Story Breakdown](docs/product/technical-story-breakdown.md)
 - [GitHub Issues Seed](docs/product/github-issues-seed.md)
+- [Engineering Standards](docs/architecture/engineering-standards.md)
+- [Security Baseline](docs/architecture/security-baseline.md)
 
 ## High-Level Architecture
 
@@ -235,6 +237,15 @@ Build the narrowest useful teammate first:
 ## Initial Implementation Principle
 
 Keep the first version simple enough for two engineers to build and operate.
+
+Use enterprise-grade defaults:
+
+- Python as the main runtime
+- `venv` and `pip` for conservative dependency management
+- pinned requirements files
+- minimal third-party tooling
+- least-privilege integrations
+- explicit security review before adding major tooling
 
 The MVP should prove:
 

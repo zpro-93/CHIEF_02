@@ -10,9 +10,23 @@ Description:
 
 Set up the base repo structure, development tooling, and environment configuration.
 
+Technical steps:
+
+1. Use Python as the main runtime.
+2. Use standard-library `venv` and `pip` for conservative dependency management.
+3. Create base repo structure for bot, agents, memory, tools, schemas, publishers, docs, and tests.
+4. Add `requirements.txt` for runtime dependencies.
+5. Add `requirements-dev.txt` for development dependencies.
+6. Add formatter, linter, test runner, and dependency audit tooling if approved.
+7. Add one passing smoke test.
+8. Add `.env.example` with required variables and no secrets.
+9. Add local development instructions to `README.md`.
+10. Add basic CI workflow for install, lint, test, and optional dependency audit.
+
 Acceptance criteria:
 
-- Runtime selected: TypeScript or Python.
+- Runtime selected: Python.
+- Dependency setup uses `venv` and `pip`.
 - Formatter, linter, and test runner are configured.
 - Example `.env` is documented.
 - Product docs are committed under `docs/product`.

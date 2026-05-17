@@ -8,19 +8,22 @@ Goal: create a clean engineering workspace both engineers can run locally.
 
 Technical steps:
 
-1. Choose runtime and framework stack.
-2. Create base repo structure for bot, agents, memory, tools, schemas, docs, and tests.
-3. Add package/dependency management.
-4. Add formatter and linter.
-5. Add test runner with one passing smoke test.
-6. Add `.env.example` with required variables and no secrets.
-7. Add local development instructions to `README.md`.
-8. Add basic CI workflow for lint/test once stack is selected.
+1. Use Python as the main runtime.
+2. Use standard-library `venv` and `pip` for conservative dependency management.
+3. Create base repo structure for bot, agents, memory, tools, schemas, publishers, docs, and tests.
+4. Add `requirements.txt` for runtime dependencies.
+5. Add `requirements-dev.txt` for development dependencies.
+6. Add formatter, linter, test runner, and dependency audit tooling if approved.
+7. Add one passing smoke test.
+8. Add `.env.example` with required variables and no secrets.
+9. Add local development instructions to `README.md`.
+10. Add basic CI workflow for install, lint, test, and optional dependency audit.
 
 Engineering notes:
 
-- Recommended MVP stack: TypeScript, `discord.js`, Postgres, and `pgvector`.
+- Recommended MVP stack: Python, `discord.py`, `venv`, `pip`, `pytest`, `black`, `flake8`, and optional `pip-audit`.
 - Keep the first repo structure boring and obvious; avoid premature framework sprawl.
+- `uv` and Poetry are not part of the initial setup because the project is using an enterprise-first supply-chain posture.
 
 ## Story 1.1: Create Discord Bot Skeleton
 
